@@ -63,7 +63,7 @@ describe('ReservationFormDialogComponent', () => {
   }
   
   const dialogMock = {
-    //close: () => {}
+    close: () => {} // eslint-disable-line
   };
 
   const formGroup = new FormGroup({

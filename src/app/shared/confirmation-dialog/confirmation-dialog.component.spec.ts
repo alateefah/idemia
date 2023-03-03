@@ -7,8 +7,8 @@ describe('ConfirmationDialogComponent', () => {
   let component: ConfirmationDialogComponent;
   let fixture: ComponentFixture<ConfirmationDialogComponent>;
   
-  const dialogMock = {
-    // close: () => {}
+  const dialogMock = { 
+    close: () => {} // eslint-disable-line
   };
 
   const data = {
