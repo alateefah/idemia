@@ -26,7 +26,7 @@ describe('ReservationListComponent', () => {
   let component: ReservationListComponent;
   let fixture: ComponentFixture<ReservationListComponent>;
   let dataService: DataService;
-  let reservations: IReservation[] = [
+  const reservations: IReservation[] = [
     {
       "stay": {
       "arrivalDate": "2021-11-18T05:00:00.000Z",
@@ -270,7 +270,7 @@ describe('ReservationListComponent', () => {
   }))
 
   it('should test search with values return result', (() => {
-    let searchParam1 = {
+    const searchParam1 = {
       firstName: '',
       lastName: 'ENG',
       phone: ''

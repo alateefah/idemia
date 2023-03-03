@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { DataService } from './data.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import IReservation from './models/reservation';
-import { defer, of } from 'rxjs';
+import { defer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 describe('DataService (with spies)', () => {
@@ -19,10 +19,9 @@ describe('DataService (with spies)', () => {
     expect(dataService).toBeTruthy();
   });
 
-
   it('should return expected reservations (HttpClient called once)', ()=> {
 
-    let expectedReservations:IReservation[] = [];
+    const expectedReservations:IReservation[] = [];
 
     httpClientSpy.get.and.returnValue(asyncData(expectedReservations));
     
@@ -59,7 +58,7 @@ describe('DataService (with mocks)', () => {
 
   it('should return expected reservations (called once)', ()=> {
 
-    let expectedReservations:IReservation[] = [];
+    const expectedReservations:IReservation[] = [];
     
     dataService.getReservations().subscribe(data => {
       expect(data).toEqual(expectedReservations);

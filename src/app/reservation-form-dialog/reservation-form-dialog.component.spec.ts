@@ -10,12 +10,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import IReservation from "../core/models/reservation";
 import { CommonModule } from '@angular/common';
 
 describe('ReservationFormDialogComponent', () => {
@@ -64,7 +63,7 @@ describe('ReservationFormDialogComponent', () => {
   }
   
   const dialogMock = {
-    close: () => {}
+    //close: () => {}
   };
 
   const formGroup = new FormGroup({
@@ -202,7 +201,7 @@ describe('ReservationFormDialogComponent', () => {
   })
 
   it ("tests onNoClick closes the dialog", () => {
-      let spy = spyOn(component.dialogRef, 'close');
+      const spy = spyOn(component.dialogRef, 'close');
   
       component.onNoClick()
 
@@ -210,7 +209,7 @@ describe('ReservationFormDialogComponent', () => {
   });
 
   it("tests onSubmit closes the dialog", () => {
-    let spy = spyOn(component.dialogRef, 'close');
+    const spy = spyOn(component.dialogRef, 'close');
     component.onSubmit()
     
     expect(spy).toHaveBeenCalled();

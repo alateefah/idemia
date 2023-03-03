@@ -8,7 +8,7 @@ describe('ConfirmationDialogComponent', () => {
   let fixture: ComponentFixture<ConfirmationDialogComponent>;
   
   const dialogMock = {
-    close: () => {}
+    // close: () => {}
   };
 
   const data = {
@@ -75,7 +75,7 @@ describe('ConfirmationDialogComponent', () => {
   });
 
   it('dialog is closed closed after cancel', () => {
-    let spy = spyOn(component.dialogRef, 'close');
+    const spy = spyOn(component.dialogRef, 'close');
     
     component.cancel()
 
@@ -83,7 +83,7 @@ describe('ConfirmationDialogComponent', () => {
   });
 
   it('dialog is closed after confirm()', () => {
-    let spy = spyOn(component.dialogRef, 'close');
+    const spy = spyOn(component.dialogRef, 'close');
     
     component.confirm()
 

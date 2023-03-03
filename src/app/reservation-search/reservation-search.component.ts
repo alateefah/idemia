@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./reservation-search.component.css']
 })
 
-export class ReservationSearchComponent {
+export class ReservationSearchComponent implements OnInit {
 
   searchForm: FormGroup;
   @Output() emitSearchParams = new EventEmitter();
