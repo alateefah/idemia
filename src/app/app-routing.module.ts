@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { RouterModule } from '@angular/router';
+import { ReservationListComponent } from './reservation-list/reservation-list.component';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot([
+      { path: '', component: ReservationListComponent },
+    ])
+  ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

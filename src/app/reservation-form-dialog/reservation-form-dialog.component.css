@@ -1,0 +1,9 @@
+.form-row {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.tag-field {
+  width: 100%;
+}

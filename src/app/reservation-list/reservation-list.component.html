@@ -1,0 +1,47 @@
+<h2>Reservations</h2>
+
+<app-reservation-search (emitSearchParams)="search($event)"></app-reservation-search>
+
+<div class="add-reservation-wrap">
+    <button mat-raised-button color="primary" (click)="addReservation()">Add New</button>
+</div>
+
+<table mat-table [dataSource]="reservations" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef>Full name</th>
+      <td mat-cell *matCellDef="let element">{{element.firstName}}  {{element.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{element.email}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomDetails">
+        <th mat-header-cell *matHeaderCellDef>Room Details</th>
+        <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-mini-fab (click)="viewReservation(element)" color="primary">
+                <mat-icon>visibility</mat-icon>        
+            </button>&nbsp;
+            <button mat-mini-fab (click)="editReservation(element)">
+                <mat-icon>edit</mat-icon>
+            </button>&nbsp;   
+            <button mat-mini-fab color="warn" (click)="deleteReservation(element)">
+                <mat-icon>delete</mat-icon>
+            </button>   
+    </ng-container> 
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,5 @@
+.add-reservation-wrap {
+  display: flex; 
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}

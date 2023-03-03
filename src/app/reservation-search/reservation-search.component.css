@@ -1,0 +1,9 @@
+.reservation-search {
+    padding: 10px;
+    margin-bottom: 10px
+}
+
+section {
+    display: flex;
+    gap:20px;
+}

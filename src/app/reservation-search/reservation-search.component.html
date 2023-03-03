@@ -1,0 +1,24 @@
+<mat-card class="reservation-search">
+    <mat-card-content>
+        <form [formGroup]="searchForm" class="search-form">
+            <section>
+                <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input matInput formControlName="phone">
+                </mat-form-field>
+            </section>
+
+            <button mat-raised-button color="primary" (click)="search()">Search</button>
+        </form>
+    </mat-card-content>
+</mat-card>
