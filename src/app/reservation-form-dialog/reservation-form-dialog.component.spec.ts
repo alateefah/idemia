@@ -3,14 +3,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReservationFormDialogComponent } from './reservation-form-dialog.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -106,6 +106,7 @@ describe('ReservationFormDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ 
+        FormsModule,
         MatDialogModule, 
         MatFormFieldModule, 
         ReactiveFormsModule, 
@@ -131,6 +132,9 @@ describe('ReservationFormDialogComponent', () => {
         {
             provide: MAT_DIALOG_DATA,
             useValue: data
+        },
+        {
+          provide: FormsModule
         }
       ]
     })
@@ -181,33 +185,34 @@ describe('ReservationFormDialogComponent', () => {
     }
     component.ngOnInit();
 
-    expect(component.minDepartureDate.toDateString()).toEqual(new Date().toDateString());
+    expect(component.minDepartureDate).toEqual(new Date());
 
-    const input: HTMLInputElement[] = fixture.debugElement.nativeElement.querySelectorAll('input');
-    console.log(input)
-    input[3].value = "leee";
-    input[3].dispatchEvent(new Event('input'));
     fixture.detectChanges()
-    fixture.whenStable().then((e)=>{
-        console.log(e)
-        console.log(component.reservationForm.value)
+    
+    const input: HTMLInputElement[] = fixture.debugElement.nativeElement.querySelectorAll('input');
+    input[0].value = "08/09/2023";
+    input[0].dispatchEvent(new Event('input'));
+
+    fixture.detectChanges()
+
+    fixture.whenStable().then(() =>{
+        expect(component.reservationForm.value.stay.arrivalDate).toEqual(new Date("08/09/2023"))
     })
 
-    console.log(component.reservationForm.value)
-
-    
-    // expect(component.minDepartureDate.toDateString()).toEqual(new Date().toDateString());
   })
 
-    it ("tests onNoClick closes the dialog", () => {
-        let spy = spyOn(component.dialogRef, 'close');
+  it ("tests onNoClick closes the dialog", () => {
+      let spy = spyOn(component.dialogRef, 'close');
+  
+      component.onNoClick()
+
+      expect(spy).toHaveBeenCalled();
+  });
+
+  it("tests onSubmit closes the dialog", () => {
+    let spy = spyOn(component.dialogRef, 'close');
+    component.onSubmit()
     
-        component.onNoClick()
-
-        expect(spy).toHaveBeenCalled();
-    });
-
-//   it("tests addTag adds value to tag[] and reservationForm", () => {
-
-//   })
+    expect(spy).toHaveBeenCalled();
+  })
 });

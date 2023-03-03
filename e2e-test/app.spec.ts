@@ -1,14 +1,16 @@
 import { test, expect } from '@playwright/test';
 
+const BASE_URL: string = process.env['baseURL'] || "http://localhost:4200";
+
 test.describe('Reservation App', () => {
   test("should load default route", async ({page}) => {
-    await page.goto('http://localhost:4200');
+    await page.goto(BASE_URL);
 
     await expect(page).toHaveTitle("Idemia - Angular");
   })
 
   test('should get header text', async ({page}) => {
-    await page.goto('http://localhost:4200');
+    await page.goto(BASE_URL);
 
     const header = await page.locator('h2').textContent()
 
@@ -16,7 +18,7 @@ test.describe('Reservation App', () => {
   });
 
   test('should allow search', async ({page}) => {
-    await page.goto('http://localhost:4200');
+    await page.goto(BASE_URL);
 
     const initialNumberOfRows = await page.locator('tbody tr').count();
     expect(initialNumberOfRows).toEqual(2)
@@ -29,7 +31,7 @@ test.describe('Reservation App', () => {
   });
 
   test('should submit new reservation with correct details', async ({page}) => {
-    await page.goto('http://localhost:4200');
+    await page.goto(BASE_URL);
 
     const initialNumberOfRows = await page.locator('tbody tr').count();
     expect(initialNumberOfRows).toEqual(2)
@@ -79,11 +81,15 @@ test.describe('Reservation App', () => {
   });
 
   test('should update firstname of the first record is updated', async ({page}) => {
-    await page.goto('http://localhost:4200');
+    await page.goto(BASE_URL);
+
     const submitButton = await page.getByRole('button', { name: 'Submit' })
     
     const firstRowActions = await page.locator('tbody tr').first().locator('td').last();
     await firstRowActions.locator('button').nth(1).click();
+    
+    const header = await page.locator('h2').last().textContent()
+    await expect(header).toEqual('Edit Reservation');
 
     await page.getByRole('textbox', { name: 'First Name' }).fill('Lateefah');
     await page.getByRole('textbox', { name: 'Last Name' }).fill('Abdulkareem');
@@ -95,7 +101,7 @@ test.describe('Reservation App', () => {
   });
 
   test('should delete a record', async ({page}) => {
-    await page.goto('http://localhost:4200');
+    await page.goto(BASE_URL);
     const firstRowActions = await page.locator('tbody tr').first().locator('td').last();
     await firstRowActions.locator('button').nth(2).click();
     
