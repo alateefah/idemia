@@ -8,7 +8,7 @@ import IReservation from './models/reservation';
 
 export class DataService {
     public constructor(private http: HttpClient) {}
-    readonly reservationUrl = '/assets/reservations.json';
+    readonly reservationUrl = './assets/reservations.json';
     
     getReservations () {
       return this.http.get<IReservation[]>(this.reservationUrl);
