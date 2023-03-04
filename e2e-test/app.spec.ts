@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const BASE_URL: string = process.env['baseURL'] || "http://localhost:4200";
+const BASE_URL = "https://alateefah.github.io/idemia"; // "http://localhost:4200";
 
 test.describe('Reservation App', () => {
   test("should load default route", async ({page}) => {
