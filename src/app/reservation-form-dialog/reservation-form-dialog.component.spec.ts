@@ -173,8 +173,8 @@ describe('ReservationFormDialogComponent', () => {
 
     component.ngOnInit();
 
-    expect(component.minDate).toEqual(new Date());
-    expect(component.minDepartureDate).toEqual(new Date());
+    expect(new Date(component.minDate)).toEqual(new Date());
+    expect(new Date(component.minDepartureDate)).toEqual(new Date());
   })
 
   it("test value of minDeparture changes when arrivalDate is changed", () => {
@@ -184,7 +184,7 @@ describe('ReservationFormDialogComponent', () => {
     }
     component.ngOnInit();
 
-    expect(component.minDepartureDate).toEqual(new Date());
+    expect(new Date(component.minDepartureDate)).toEqual(new Date());
 
     fixture.detectChanges()
     
