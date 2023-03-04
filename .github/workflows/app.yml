@@ -20,7 +20,8 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: npm run test
+      - run: npm install
+      - run: npm test:prod
   playwright-e2e:
     timeout-minutes: 60
     runs-on: ubuntu-latest

@@ -166,7 +166,7 @@ describe('ReservationListComponent', () => {
     expect(tableHeaders[0].innerHTML).toBe("Full name");
     expect(tableHeaders[1].innerHTML).toBe("Phone");
     expect(tableHeaders[2].innerHTML).toBe("Email");
-    expect(tableHeaders[3].innerHTML).toBe("Room Details");
+    expect(tableHeaders[3].innerHTML).toBe("Note");
   }))
 
   it('should test addReservation method in component', (() => {
