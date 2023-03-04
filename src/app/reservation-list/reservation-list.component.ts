@@ -15,7 +15,7 @@ import { ConfirmationDialogComponent } from "../shared/confirmation-dialog/confi
 export class ReservationListComponent implements OnInit {
     public reservations: IReservation[];
     public reservationsCopy: IReservation[];
-    public displayedColumns: string[] = ['fullName', 'phone', 'email', 'roomDetails', 'actions'];
+    public displayedColumns: string[] = ['fullName', 'phone', 'email', 'note', 'actions'];
     constructor(private dataService: DataService, public dialog: MatDialog) {}
 
     async ngOnInit(): Promise<void> {
